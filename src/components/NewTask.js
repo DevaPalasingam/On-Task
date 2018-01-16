@@ -1,21 +1,29 @@
 import React from "react";
 
+// NewTask is the input bar that the user can type new tasks into
 class NewTask extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: "" };
+		this.state = {
+			value: "",
+		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(event) {
+		// console.log(event);
 		this.setState({ value: event.target.value });
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
-		alert("A name was submitted: " + this.state.value);
+		// if-statement runs only if the user typed something in the input
+		if (this.state.value) {
+			this.props.handlesUserInput(this.state.value);
+			this.setState({value: ""});
+		}
 	}
 
 	render() {
