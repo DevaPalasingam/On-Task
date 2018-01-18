@@ -10,6 +10,7 @@ class App extends React.Component {
 		};
 
 		this.handlesUserInput = this.handlesUserInput.bind(this);
+		this.handlesItemDelete = this.handlesItemDelete.bind(this);
 	}
 
 	// this fuction gets sent to NewTask which will then push the user's input into the listItems array
@@ -20,11 +21,22 @@ class App extends React.Component {
 		this.setState({ listItem: newArray });
 	}
 
+	// this function gets sent to ListItem which will delete an element from the listItems array
+	handlesItemDelete(idx) {
+		console.log(idx)
+		// finds the index of the item that needs to be removed
+		// let removeItem = this.state.listItems.indexOf(item);
+		// creates a new array with the item spliced out
+		let newArray = this.state.listItems.splice(idx, 1);
+		// overwrites listItem with the new array
+		this.setState({ listItem: newArray });
+	}
+
 	render() {
 		return (
 			<div>
 				<NewTask handlesUserInput={this.handlesUserInput} />
-				<ListItem listItems={this.state.listItems} />
+				<ListItem listItems={this.state.listItems} handlesItemDelete={this.handlesItemDelete}/>
 			</div>
 		);
 	}
