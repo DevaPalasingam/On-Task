@@ -15,3 +15,8 @@ https://devapalasingam.github.io/on-task/
 # Day 3
 ### -Deployed to gh-pages
 ### -Each item now has a delete button
+### -Delete button now removes items
+
+# Day 4
+### -Added input for number of minutes
+### - Delete button now removes both the task and it's number of minutes

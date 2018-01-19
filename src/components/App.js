@@ -5,7 +5,7 @@ import ListItem from "./ListItem";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { 
+		this.state = {
 			listItems: []
 		};
 
@@ -23,11 +23,9 @@ class App extends React.Component {
 
 	// this function gets sent to ListItem which will delete an element from the listItems array
 	handlesItemDelete(idx) {
-		console.log(idx)
-		// finds the index of the item that needs to be removed
-		// let removeItem = this.state.listItems.indexOf(item);
+		console.log(idx);
 		// creates a new array with the item spliced out
-		let newArray = this.state.listItems.splice(idx, 1);
+		let newArray = this.state.listItems.splice(idx - 1, 2);
 		// overwrites listItem with the new array
 		this.setState({ listItem: newArray });
 	}
@@ -36,7 +34,10 @@ class App extends React.Component {
 		return (
 			<div>
 				<NewTask handlesUserInput={this.handlesUserInput} />
-				<ListItem listItems={this.state.listItems} handlesItemDelete={this.handlesItemDelete}/>
+				<ListItem
+					listItems={this.state.listItems}
+					handlesItemDelete={this.handlesItemDelete}
+				/>
 			</div>
 		);
 	}

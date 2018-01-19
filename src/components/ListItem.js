@@ -12,15 +12,30 @@ class ListItem extends React.Component {
 	render() {
 		const listItems = this.props.listItems;
 		// eachItem holds each item in the listItems array
-		const eachItem = listItems.map((listItem,idx) => (
-			<div  key={idx}>
-				<li>{listItem}</li>
-				<DeleteButton idx={idx} handlesItemDelete={this.props.handlesItemDelete}/>
-			</div>
-		));
+		const eachItem = listItems.map((listItem, idx) => {
+			// console.log(`list item is: ${listItem}`)
+
+			if (listItem.endsWith(" min")) {
+				return (
+					<div key={idx}>
+						<p>{listItem}</p>
+						<DeleteButton
+							idx={idx}
+							handlesItemDelete={this.props.handlesItemDelete}
+						/>
+					</div>
+				);
+			} else {
+				return (
+					<div key={idx}>
+						<p>{listItem}</p>
+					</div>
+				);
+			}
+		});
 
 		// returns each item in the list
-		return <ul>{eachItem}</ul>;
+		return <div>{eachItem}</div>;
 	}
 }
 
